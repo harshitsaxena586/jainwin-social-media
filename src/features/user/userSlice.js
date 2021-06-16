@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice, current } from "@reduxjs/toolkit";
 import { gql } from "graphql-request";
 
 export const fetchUser = createAsyncThunk(
@@ -8,6 +8,7 @@ export const fetchUser = createAsyncThunk(
       query ($userId: ID!) {
         user(userId: $userId) {
           userName
+          id
           following {
             userName
             id
@@ -62,12 +63,27 @@ export const userSlice = createSlice({
   extraReducers: {
     [fetchUser.fulfilled]: (state, action) => {
       state.user = action.payload.user;
-
       state.status = "fullfilled";
+      const { followers } = action.payload.user;
+      const client = localStorage.getItem("userId");
+      const isUserFollowedByClient = followers.find(({ id }) => id === client);
+      if (isUserFollowedByClient) {
+        state.isUserFollowedByClient = true;
+      }
     },
     [followUser.fulfilled]: (state, action) => {
-      state.user.followers.push({ id: action.payload });
-      state.isUserFollowedByClient = true;
+      const { followers } = current(state.user);
+      const client = localStorage.getItem("userId");
+      const isUserFollowedByClient = followers.find(({ id }) => id === client);
+      console.log(isUserFollowedByClient);
+      if (isUserFollowedByClient) {
+        const updadtedFolllowers = followers.filter(({ id }) => id != client);
+        state.user.followers = updadtedFolllowers;
+        state.isUserFollowedByClient = false;
+      } else if (!isUserFollowedByClient) {
+        state.user.followers.push({ id: client });
+        state.isUserFollowedByClient = true;
+      }
     },
   },
 });

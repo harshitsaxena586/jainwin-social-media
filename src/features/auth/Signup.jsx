@@ -33,7 +33,7 @@ export default function Signup() {
   const onSubmit = async (credentials) => {
     try {
       const response = await axios.post(
-        "https://testingHeroku.harshitsaxena58.repl.co/users/s",
+        "https://socialMediaApollo.harshitsaxena58.repl.co/users/s",
         {
           credentials,
         }
@@ -61,7 +61,7 @@ export default function Signup() {
   };
 
   return (
-    <div className="my-10 min-w-full shadow-2xl rounded-md p-10 pb-16">
+    <div className="my-10 min-w-full shadow-2xl rounded-md  pb-16 md:p-10">
       <h2 className="text-5xl my-3 text-gray-900 text-center font-primary font-bold">
         Sign Up
       </h2>
@@ -73,7 +73,7 @@ export default function Signup() {
           type="text"
           {...register("name")}
           placeholder="Name"
-          class="text-lg shadow ring-accent  outline-none focus:ring-2 focus:ring-offset-red-600 p-2 rounded-md"
+          class="text-lg shadow ring-accent outline-none focus:ring-2 focus:ring-offset-red-600 p-2 rounded-md"
         />
         {errors.name && <p className="form-error">{errors.name.message}</p>}
         <input
@@ -87,7 +87,7 @@ export default function Signup() {
         )}
 
         <input
-          type="text"
+          type="password"
           {...register("password")}
           placeholder="Password"
           class="text-lg shadow ring-accent  outline-none focus:ring-2 focus:ring-offset-red-600 p-2 rounded-md"

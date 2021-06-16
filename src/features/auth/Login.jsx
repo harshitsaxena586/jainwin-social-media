@@ -4,9 +4,8 @@ import axios from "axios";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
 import { toast } from "react-hot-toast";
-import { useNavigate } from "react-router";
+
 export default function Login() {
-  const navigate = useNavigate();
   const validation = Yup.object().shape({
     userName: Yup.string().required("Username is required"),
     password: Yup.string().required("Password is required"),
@@ -23,7 +22,7 @@ export default function Login() {
   const onSubmit = async (credentials) => {
     try {
       const response = await axios.post(
-        "https://testingHeroku.harshitsaxena58.repl.co/users",
+        "https://socialMediaApollo.harshitsaxena58.repl.co/users",
         {
           credentials,
         }
@@ -34,7 +33,7 @@ export default function Login() {
       toast.success(
         <h1 className="text-lg font-primary font-medium">Welcome Back ! </h1>
       );
-      navigate("/");
+      window.location.reload();
     } catch (error) {
       if (error.response.status === 404) {
         toast.error(
@@ -53,7 +52,7 @@ export default function Login() {
   };
 
   return (
-    <div className="my-10 min-w-full shadow-2xl rounded-md p-10 pb-16 ">
+    <div className="my-10 min-w-full shadow-2xl rounded-md  pb-16 md:p-10 ">
       <h2 className="text-5xl my-3 text-gray-900 text-center font-primary font-bold ">
         Login
       </h2>

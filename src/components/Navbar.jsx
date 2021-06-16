@@ -1,9 +1,9 @@
-import {  NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 export default function Navbar() {
   return (
     <div className=" col-span-1">
-      <nav className=" inset-x md:flex flex-col md:fixed left-44 mt-10 items-end ">
+      <nav className=" inset-x md:flex flex-col md:fixed 2xl:left-44 xl:left-28 md:left-16 mt-10 items-end ">
         <div className="hidden md:block">
           <img
             src="https://ik.imagekit.io/harshit/Logo_fMEp4D07jbZ.svg"

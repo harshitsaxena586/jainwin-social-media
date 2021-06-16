@@ -9,7 +9,7 @@ import { useParams } from "react-router-dom";
 export default function User() {
   const { networkCall, Loading } = useNetwork();
   let { userId } = useParams();
-  const { user, status, isUserFollowedByClient } = useSelector((state) => {
+  let { user, status, isUserFollowedByClient } = useSelector((state) => {
     return state.user;
   });
   const dispatch = useDispatch();
@@ -19,7 +19,10 @@ export default function User() {
     }
   }, [dispatch, status, userId]);
   const { userName, followers, following, posts } = user;
-
+  if (userId !== user.id && status === "fullfilled") {
+    status = "idle";
+    dispatch(fetchUser({ userId, networkCall }));
+  }
   return (
     <div>
       <Loading />
