@@ -22,7 +22,7 @@ export default function Login() {
   const onSubmit = async (credentials) => {
     try {
       const response = await axios.post(
-        "https://socialMediaApollo.harshitsaxena58.repl.co/users",
+        "https://socialmediaapollo.shreydd.repl.co/users",
         {
           credentials,
         }

@@ -33,7 +33,7 @@ export default function Signup() {
   const onSubmit = async (credentials) => {
     try {
       const response = await axios.post(
-        "https://socialMediaApollo.harshitsaxena58.repl.co/users/s",
+        "https://socialmediaapollo.shreydd.repl.co/users/s",
         {
           credentials,
         }

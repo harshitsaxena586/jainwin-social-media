@@ -3,6 +3,7 @@ module.exports = {
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {
+      backgroundColor: ["active"],
       fontFamily: {
         primary: "Montserrat",
         secondary: "Nunito",

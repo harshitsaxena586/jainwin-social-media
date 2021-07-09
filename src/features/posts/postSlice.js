@@ -4,15 +4,18 @@ import { gql } from "graphql-request";
 export const updateLikes = createAsyncThunk(
   "add likes on server",
   async ({ id, networkCall }) => {
+    const clientuserName = localStorage.getItem("userName");
+    console.log(clientuserName);
     const query = gql`
-      mutation ($postId: ID!) {
-        updateLikes(postId: $postId)
+      mutation ($postId: ID!, $clientuserName: String!) {
+        updateLikes(postId: $postId, clientuserName: $clientuserName)
       }
     `;
     const variables = {
       postId: id,
+      clientuserName: clientuserName,
     };
-    //the second arguement here is for client lie
+    //here , the second arguement is for client lie
     const data = await networkCall(query, true, variables);
     return data;
   }

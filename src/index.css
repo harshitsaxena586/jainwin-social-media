@@ -32,7 +32,7 @@ input:focus-within ~ label {
     linear-gradient(
       90deg,
       hsl(194, 74%, 56%),
-      hsl(266, 74%, 56%),
+      hsla(266, 74%, 56%, 0.055),
       hsl(338, 74%, 56%),
       hsl(50, 74%, 56%),
       hsl(122, 74%, 56%)

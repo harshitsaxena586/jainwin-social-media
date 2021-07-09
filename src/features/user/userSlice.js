@@ -77,7 +77,7 @@ export const userSlice = createSlice({
       const isUserFollowedByClient = followers.find(({ id }) => id === client);
       console.log(isUserFollowedByClient);
       if (isUserFollowedByClient) {
-        const updadtedFolllowers = followers.filter(({ id }) => id != client);
+        const updadtedFolllowers = followers.filter(({ id }) => id !== client);
         state.user.followers = updadtedFolllowers;
         state.isUserFollowedByClient = false;
       } else if (!isUserFollowedByClient) {
