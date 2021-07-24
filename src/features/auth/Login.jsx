@@ -5,11 +5,21 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
 import { toast } from "react-hot-toast";
 
+const guestCredentials = {
+  userName: "guestUser",
+  password: "@guestUser1",
+};
+
 export default function Login() {
   const validation = Yup.object().shape({
     userName: Yup.string().required("Username is required"),
     password: Yup.string().required("Password is required"),
   });
+
+  const guestLoginHandler = () => {
+    onSubmit(guestCredentials);
+  };
+
   const {
     register,
     handleSubmit,
@@ -20,6 +30,7 @@ export default function Login() {
   });
 
   const onSubmit = async (credentials) => {
+    console.log(credentials);
     try {
       const response = await axios.post(
         "https://socialmediaapollo.shreydd.repl.co/users",
@@ -52,7 +63,7 @@ export default function Login() {
   };
 
   return (
-    <div className="my-10 min-w-full shadow-2xl rounded-md  pb-16 md:p-10 ">
+    <div className="my-10 min-w-full shadow-2xl rounded-md md:p-10 ">
       <h2 className="text-5xl my-3 text-gray-900 text-center font-primary font-bold ">
         Login
       </h2>
@@ -79,11 +90,19 @@ export default function Login() {
         {errors.password && (
           <p className="form-error">{errors.password.message}</p>
         )}
-
         <button className="btn-indigo" type="submit">
-          Submit
+          Login
         </button>
       </form>
+      <div className="mt-6 px-4 text-center text-lg font-secondary">
+        <button
+          title="Logs you in with a guest profile"
+          className="text-2xl  min-w-full text-accent border-accent border-2 px-4 py-2  rounded-lg font-secondary font-semibold"
+          onClick={guestLoginHandler}
+        >
+          Guest Login
+        </button>{" "}
+      </div>
     </div>
   );
 }

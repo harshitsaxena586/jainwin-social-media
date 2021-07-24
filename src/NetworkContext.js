@@ -74,7 +74,7 @@ export function NetworkContextProvider({ children }) {
     );
   }
   return (
-    <NetworkContext.Provider value={{ Loading, networkCall, error }}>
+    <NetworkContext.Provider value={{ Loading, networkCall }}>
       {children}
     </NetworkContext.Provider>
   );

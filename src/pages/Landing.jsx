@@ -64,6 +64,7 @@ export default function Landing() {
               Or {action === "login" ? "Sign Up" : "Login"} Instead
             </h1>
           )}
+          <br />
         </div>
       </div>
     </div>

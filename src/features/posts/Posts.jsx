@@ -2,17 +2,20 @@ import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import Post from "./Post";
 import { useNetwork } from "../../NetworkContext";
-import { fetchposts, likeButtonPressed, updateLikes } from "./postSlice";
+import { fetchposts, updateLikes } from "./postSlice";
 
 export default function Posts({ userId }) {
   const { networkCall, Loading } = useNetwork();
+
   let { posts, status } = useSelector((state) => {
     return state.posts;
   });
   const dispatch = useDispatch();
+
   if (userId) {
     posts = posts.filter((post) => post.postedBy.id == userId);
   }
+
   // need to pass network call from here because thunk doesnt take context
   useEffect(() => {
     if (status === "idle") {

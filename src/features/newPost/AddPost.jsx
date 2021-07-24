@@ -6,9 +6,13 @@ import toast from "react-hot-toast";
 import axios from "axios";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
+import { fetchposts } from "../posts/postSlice";
 import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+
 export default function AddPost() {
   const { networkCall } = useNetwork();
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const [previewSource, setPreviewSource] = useState("");
   const validation = Yup.object().shape({
@@ -41,6 +45,12 @@ export default function AddPost() {
       previewFile(watchImage[0]);
     }
   }
+  // ------------------------
+  let { status } = useSelector((state) => {
+    return state.posts;
+  });
+
+  // -----------------------
 
   const onSubmit = async (data) => {
     const formData = new FormData();
@@ -57,14 +67,19 @@ export default function AddPost() {
         title: data.title,
         caption: data.caption,
       };
+      await toast.promise(networkCall(query, false, variables), {
+        loading: (
+          <h1 className="text-md font-primary font-medium">Saving...</h1>
+        ),
+        success: (
+          <h1 className="text-md font-primary font-medium">
+            Posted successfully 🚀
+          </h1>
+        ),
+        error: <b>Could not save.</b>,
+      });
 
-      const response = await networkCall(query, true, variables);
-      toast.success(
-        <h1 className="text-md font-primary font-medium">
-          Posted successfully 🚀
-        </h1>
-      );
-
+      dispatch(fetchposts(networkCall));
       navigate("/");
     }
 
@@ -79,13 +94,17 @@ export default function AddPost() {
       public_id: cloudinaryRes.data.public_id,
     };
 
-    const response = await networkCall(query, true, variables);
-    toast.success(
-      <h1 className="text-md font-primary font-medium">
-        Posted successfully 🚀
-      </h1>
-    );
+    await toast.promise(networkCall(query, false, variables), {
+      loading: <h1 className="text-md font-primary font-medium">Saving...</h1>,
+      success: (
+        <h1 className="text-md font-primary font-medium">
+          Posted successfully 🚀
+        </h1>
+      ),
+      error: <b>Could not save.</b>,
+    });
 
+    dispatch(fetchposts(networkCall));
     navigate("/");
   };
 
