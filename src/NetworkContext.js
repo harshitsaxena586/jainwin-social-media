@@ -9,7 +9,6 @@ export function NetworkContextProvider({ children }) {
   const [isLoading, setisLoading] = useState(true);
   const [error, setError] = useState(false);
 
-  // -----------------------------------------
 
   async function networkCall(query, isClientLie, variables) {
     const endpoint = "https://socialmediaapollo.shreydd.repl.co/graphql";

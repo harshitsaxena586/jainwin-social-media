@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Toaster } from "react-hot-toast";
 import "./App.css";
 import { Routes, Route, useNavigate } from "react-router-dom";
@@ -11,6 +11,7 @@ import Navbar from "./components/Navbar";
 import Search from "./components/Search";
 import User from "./features/user/User";
 import Settings from "./pages/Settings";
+import { useNetwork } from "./NetworkContext";
 
 function App() {
   const isUserLoggedIn = localStorage.getItem("userId");
@@ -33,7 +34,6 @@ function App() {
               <Route path="/settings" element={<Settings />} />
             </Routes>
           </div>
-           
           <Search />
         </div>
       ) : (

@@ -29,7 +29,6 @@ export default function Post({
             size={50}
             name={postedBy.userName}
             variant="beam"
-            // colors={["#92A1C6", "#146A7C", "#F0AB3D", "#C271B4", "#C20D90"]}
             colors={["#ffbe0b", "#fb5607", "#ff006e", "#8338ec", "#3a86ff"]}
           />
           <h1 className="text-2xl font-primary font-medium  text-text">

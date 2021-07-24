@@ -5,7 +5,6 @@ export const updateLikes = createAsyncThunk(
   "add likes on server",
   async ({ id, networkCall }) => {
     const clientuserName = localStorage.getItem("userName");
-    console.log(clientuserName);
     const query = gql`
       mutation ($postId: ID!, $clientuserName: String!) {
         updateLikes(postId: $postId, clientuserName: $clientuserName)
@@ -42,7 +41,6 @@ export const fetchposts = createAsyncThunk(
       }
     `;
     const response = await networkCall(query);
-    console.log(response);
     return response;
   }
 );
@@ -60,7 +58,6 @@ export const postSlice = createSlice({
     [fetchposts.fulfilled]: (state, action) => {
       state.status = "fullfilled";
       state.posts = action.payload.posts;
-      console.log("count", state);
     },
     [updateLikes.fulfilled]: (state, action) => {
       const userId = localStorage.getItem("userId");
