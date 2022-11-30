@@ -33,7 +33,7 @@ export default function Login() {
     console.log(credentials);
     try {
       const response = await axios.post(
-        "https://socialmediaapollo.shreydd.repl.co/users",
+       process.env.API,
         {
           credentials,
         }

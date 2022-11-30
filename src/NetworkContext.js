@@ -11,7 +11,7 @@ export function NetworkContextProvider({ children }) {
 
 
   async function networkCall(query, isClientLie, variables) {
-    const endpoint = "https://socialmediaapollo.shreydd.repl.co/graphql";
+    const endpoint = process.env.API;
     const authToken = localStorage.getItem("authToken");
 
     const graphQLClient = new GraphQLClient(endpoint, {
