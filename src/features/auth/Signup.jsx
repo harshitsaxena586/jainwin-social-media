@@ -33,7 +33,7 @@ export default function Signup() {
   const onSubmit = async (credentials) => {
     try {
       const response = await axios.post(
-      process.env.API,
+      "https://socialMediaApollo.harshitsaxena58.repl.co/graphql",
         {
           credentials,
         }
