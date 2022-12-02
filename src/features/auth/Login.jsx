@@ -33,7 +33,7 @@ export default function Login() {
     console.log(credentials);
     try {
       const response = await axios.post(
-       "https://socialMediaApollo.harshitsaxena58.repl.co/users",
+       "https://socialmediaapollo-production.up.railway.app/users",
         {
           credentials,
         }
