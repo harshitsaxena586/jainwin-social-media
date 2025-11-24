@@ -53,7 +53,7 @@ export default function Post({
         </div>
       )}
       <p className="text-xl text-text font-secondary  xl:mx-4">{caption}</p>
-      <button
+      <button 
         className="px-4 py-2 bg-red-200 m-2 rounded-xl "
         onClick={() => dispatch(updateLikes({ id, networkCall }))}
       >

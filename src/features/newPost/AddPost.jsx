@@ -177,7 +177,7 @@ export default function AddPost() {
           />
         </label>
         {previewSource && <img src={previewSource} alt="chosen" />}
-        <button className="btn-indigo">Post</button>
+        <button id="post" className="btn-indigo">Post</button>
       </form>
     </div>
   );

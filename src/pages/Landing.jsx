@@ -57,12 +57,13 @@ export default function Landing() {
             </motion.div>
           )}
           {action && (
-            <h1
+            <button
+              id="signup"
               onClick={() => setAction(action === "login" ? "signup" : "login")}
-              className="text-center text-xl cursor-pointer font-medium text-accent"
+              className="text-center text-xl cursor-pointer font-medium w-full text-accent"
             >
               Or {action === "login" ? "Sign Up" : "Login"} Instead
-            </h1>
+            </button>
           )}
           <br />
         </div>
