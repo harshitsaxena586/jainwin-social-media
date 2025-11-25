@@ -33,7 +33,7 @@ export default function Signup() {
   const onSubmit = async (credentials) => {
     try {
       const response = await axios.post(
-        "http://server.hsaxena.in:4000/users/s",
+        "https://server.hsaxena.in/users/s",
         {
           credentials,
         }

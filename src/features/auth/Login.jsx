@@ -33,7 +33,7 @@ export default function Login() {
     console.log(credentials);
     try {
       const response = await axios.post(
-        "http://server.hsaxena.in:4000/users",
+        "https://server.hsaxena.in/users",
         {
           credentials,
         }

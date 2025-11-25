@@ -11,7 +11,7 @@ export function NetworkContextProvider({ children }) {
 
 
   async function networkCall(query, isClientLie, variables) {
-    const endpoint = "http://server.hsaxena.in:4000/graphql";
+    const endpoint = "https://server.hsaxena.in/graphql";
     const authToken = localStorage.getItem("authToken");
 
     const graphQLClient = new GraphQLClient(endpoint, {
