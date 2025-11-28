@@ -10,7 +10,7 @@ export default function Navbar() {
             alt="logo"
           />
         </div>
-        <ul class="bg-white rounded-md flex gap-20 p-4 px-6 shadow-lg fixed left-1/2 -translate-x-1/2	transform -bottom-10 flex md:static md:transform-none md:flex-col flex my-20 font-secondary md:gap-8 font-bold text-gray-900 text-2xl ">
+        <ul class="bg-white rounded-md flex gap-20 p-4 px-6 shadow-lg fixed left-1/2 -translate-x-1/2	transform bottom-0 md:static md:transform-none md:flex-col  mb-1 font-secondary md:gap-8 font-bold text-gray-900 text-2xl ">
           <li className="order-start">
             {" "}
             <NavLink exact="true" className="flex items-center gap-4 " to="/">

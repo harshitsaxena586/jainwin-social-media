@@ -61,7 +61,7 @@ export default function Signup() {
   };
 
   return (
-    <div className="my-10 min-w-full shadow-2xl rounded-md  pb-16 md:p-10">
+    <div className="my-10 min-w-full md:shadow-2xl rounded-md  pb-16 md:p-10">
       <h2 className="text-5xl my-3 text-gray-900 text-center font-primary font-bold">
         Sign Up
       </h2>

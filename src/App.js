@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Toaster } from "react-hot-toast";
 import "./App.css";
-import { Routes, Route, useNavigate } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import AddPost from "./features/newPost/AddPost";
 import Home from "./pages/Home";
 import ProfilePage from "./pages/ProfilePage";
@@ -11,7 +11,6 @@ import Navbar from "./components/Navbar";
 import Search from "./components/Search";
 import User from "./features/user/User";
 import Settings from "./pages/Settings";
-import { useNetwork } from "./NetworkContext";
 
 function App() {
   const isUserLoggedIn = localStorage.getItem("userId");

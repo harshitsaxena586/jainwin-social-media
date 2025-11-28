@@ -10,15 +10,17 @@ export default function Landing() {
   };
   const [action, setAction] = useState(null);
   return (
-    <div className="bg-gray-50 flex w-full flex-wrap md:flex-nowrap	min-h-screen">
+    <div className="bg-gray-50 flex-col md:flex-row flex w-full flex-wrap justify-center md:flex-nowrap	min-h-screen">
       <motion.div
         initial="hidden"
         animate="visible"
         transition={{ duration: 1.2 }}
         variants={variants}
-        className=" self-center max-w-6xl m-4 md:m-16 "
+        className={` self-center max-w-6xl m-4 md:m-16 ${
+          action != null ? "hidden" : null
+        } md:block `}
       >
-        <h1 className="font-primary font-bold text-6xl 2xl:text-7xl capitalize  ">
+        <h1 className="font-primary font-bold text-5xl 2xl:text-7xl capitalize  ">
           Welcome to The biggest Community of{" "}
           <span className="text-accent">PC Hardware</span> enthusiasts
         </h1>
@@ -34,7 +36,7 @@ export default function Landing() {
         </h2>
       </motion.div>
 
-      <div className=" self-center  w-4/6 m-4 md:m-10 ">
+      <div className=" self-center  w-full md:w-4/6 md:m-10 ">
         <div>
           {action === "login" && (
             <motion.div
